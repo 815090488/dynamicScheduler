@@ -31,8 +31,7 @@ public class CronTaskRegistrar implements DisposableBean {
 
     public void addCronTask(Integer cronId,CronTask cronTask) {
         if (cronTask != null) {
-            Runnable task = cronTask.getRunnable();
-            if (this.scheduledTasks.containsKey(task)) {
+            if (this.scheduledTasks.containsKey(cronId)) {
                 removeCronTask(cronId);
             }
             this.scheduledTasks.put(cronId, scheduleCronTask(cronTask));
